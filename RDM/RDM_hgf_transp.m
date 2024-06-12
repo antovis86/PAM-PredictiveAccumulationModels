@@ -24,22 +24,26 @@ pstruct = struct;
 
 % Apply exponential transformation to "B0"
 pvec(1)      = exp(ptrans(1));
-pstruct.b0Bmu   = pvec(1);
+pstruct.b0B   = pvec(1);
 
 % Transform "b1" values in the range (-1,1)
 pvec(2)      = 2/(1+exp(-ptrans(2)))-1;
-pstruct.b1Bmu   = pvec(2);
+pstruct.b1B   = pvec(2);
 
 % Apply exponential transformation to "Vv"
 pvec(3)      = exp(ptrans(3));
-pstruct.Vvmu   = pvec(3);
+pstruct.Vv   = pvec(3);
 
 % Apply exponential transformation to "Vi"
 pvec(4)      = exp(ptrans(4));
-pstruct.Vimu   = pvec(4);
+pstruct.Vi   = pvec(4);
+
+% Transform "bv" values in the range (-1,1)
+pvec(5)      = 2/(1+exp(-ptrans(5)))-1;
+pstruct.bv = pvec(5);
 
 % Transform "T" using a sigmoid centered at the minimum value of y 
-pvec(5)      = min(y)/(1+exp(-ptrans(5)));
-pstruct.Tmu = pvec(5);
+pvec(6)      = min(y)/(1+exp(-ptrans(6)));
+pstruct.Tmu = pvec(6);
 
 return;

@@ -20,10 +20,11 @@ function [logp, yhat, res] = RDM_hgf(r, infStates, ptrans)
 % --------------------------------------------------------------------------------------------------
 
 % Transform parameters to their native space
-b0Bmu = exp(ptrans(1));
-b1Bmu = 2/(1+exp(-ptrans(2)))-1;
-Vvmu = exp(ptrans(3));
-Vimu = exp(ptrans(4));
+b0B = exp(ptrans(1));
+b1B = 2/(1+exp(-ptrans(2)))-1;
+Vv = exp(ptrans(3));
+Vi = exp(ptrans(4));
+bv = 2/(1+exp(-ptrans(5)))-1;
 
 % Initialize returned log-probabilities, predictions,
 % and residuals as NaNs so that NaN is returned for all
@@ -47,8 +48,8 @@ resp(r.irr)  = [];
 
 % Fitting the non-decision time with the minimum value of estimated
 % non-decision time
-Tmu = min(rt)/(1+exp(-ptrans(5)));
-rt = max(eps,rt-Tmu);
+T = min(rt)/(1+exp(-ptrans(6)));
+rt = max(eps,rt-T);
 
 
 % extract the trial list and remove the irregular trials
@@ -56,12 +57,16 @@ u = r.u(:,1);
 u(r.irr) = [];
 
 % Calculate threshold for both the accumulators
-B_dx = b0Bmu + b1Bmu.*(.5-mu1hat).*2.*b0Bmu;
-B_sx = b0Bmu + b1Bmu.*(.5-(1-mu1hat)).*2*b0Bmu;
+B_dx = b0B + b1B.*(.5-mu1hat).*2.*b0B;
+B_sx = b0B + b1B.*(.5-(1-mu1hat)).*2*b0B;
+
 
 % Calculate drift rate for both accumulators
-drift_r1 = Vvmu .* double(u == 1) + Vimu .* double(u == 0);
-drift_r2 = Vvmu .* double(u == 0) + Vimu .* double(u == 1);
+drift_r1 = Vv .* double(u == 1) + Vi .* double(u == 0);
+drift_r1 = drift_r1 + (bv .* (mu1hat - .5).*2.*drift_r1);
+
+drift_r2 = Vv .* double(u == 0) + Vi .* double(u == 1);
+drift_r2 = drift_r2 + (bv.*((1-mu1hat) - .5).*2.*drift_r2);
 
 
 % Calculate predicted log-likelihood
