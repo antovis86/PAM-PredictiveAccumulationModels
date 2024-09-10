@@ -38,7 +38,6 @@ bopars = tapas_fitModel([],...
     'tapas_quasinewton_optim_config');
 % cutting out the last level of ehgf
 prc_model.ommu = bopars.p_prc.om;
-prc_model.omsa(2) = 6;
 
 
 

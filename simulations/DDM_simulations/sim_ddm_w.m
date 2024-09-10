@@ -49,7 +49,6 @@ bopars = tapas_fitModel([],...
     'tapas_quasinewton_optim_config');
 
 prc_model.ommu = bopars.p_prc.om;
-prc_model.omsa(2) = 6;
 
 p_obs = nan(length(a_all),length(bw_all),nsubj,4);
 p_prc = nan(length(a_all),length(bw_all),nsubj,4);

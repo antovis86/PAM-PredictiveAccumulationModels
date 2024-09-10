@@ -40,7 +40,6 @@ bopars = tapas_fitModel([],...
     'tapas_bayes_optimal_binary_config',...
     'tapas_quasinewton_optim_config');
 prc_model.ommu = bopars.p_prc.om;
-prc_model.omsa(2) = 6;
 
 % Generate empty arrays to collect results
 tot = length(b0B_all)*length(b1_all)*length(Vv_all)*length(Vi_all)*nsubj;
