@@ -57,7 +57,7 @@ for sx = 1:length(a_all)
         v = v_all(sx);
         ba = ba_all(bx);
         w = .5 + bw.*(muhat - .5);
-        a = a - ba.*(abs(.5-muhat)).*a;
+        a = a - ba.*(abs(.5-muhat).*2).*a;
         v = u.*(v + bv.*(muhat - .5).*2.*v) - (1-u).*(v + bv.*((1-muhat)- .5).*2.*v);
 
         rt = nan(length(u),nsubj); resp = nan(length(u),nsubj);

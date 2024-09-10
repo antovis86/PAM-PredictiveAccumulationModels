@@ -44,27 +44,27 @@ c.model = 'ddm: hgf';
 
 % Upper absorbing barriers
 c.amu = 0;
-c.asa = 6.25;
+c.asa = 4;
 
 % Drift
 c.vmu = 0;
-c.vsa = 6.25;
+c.vsa = 4;
 
 % Influence of muhat on the relative starting point (w)
 c.bwmu = 0;
-c.bwsa = 6.25;
+c.bwsa = 4;
 
 % Influence of muhat on a
 c.bamu = 0;
-c.basa = 6.25;
+c.basa = 4;
 
 % Influence of muhat on v
 c.bvmu = 0;
-c.bvsa = 6.25;
+c.bvsa = 4;
 
 % Non decision time
 c.Tmu = 0;
-c.Tsa = 6.25;
+c.Tsa = 4;
 
 
 % Gather prior settings in vectors

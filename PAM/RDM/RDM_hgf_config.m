@@ -49,27 +49,27 @@ c.model = 'inverse gaussian: hgf';
 
 % Intercept of B
 c.b0Bmu = 0;
-c.b0Bsa = 6.25;
+c.b0Bsa = 4;
 
 % Muhat Slope of B
 c.b1Bmu = 0;
-c.b1Bsa = 6.25;
+c.b1Bsa = 4;
 
 % Drift V for valid response (resp == input)
 c.Vvmu = 0;
-c.Vvsa = 6.25;
+c.Vvsa = 4;
 
 % Drift V for invalid response (resp != input)
 c.Vimu = 0;
-c.Visa = 6.25;
+c.Visa = 4;
 
 % Influence of muhat on v
 c.bvmu = 0;
-c.bvsa = 6.25;
+c.bvsa = 4;
 
 % Non decision time
 c.Tmu = 0;
-c.Tsa = 6.25;
+c.Tsa = 4;
 
 
 % Gather prior settings in vectors
