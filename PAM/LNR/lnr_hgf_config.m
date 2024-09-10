@@ -43,19 +43,19 @@ c.model = 'lnr: hgf';
 
 % D/V for valid response (resp == input)
 c.bvmu = 0;
-c.bvsa = 6.25;
+c.bvsa = 6;
 
 % D/V for invalid response (resp != input)
 c.bimu = 0;
-c.bisa = 6.25;
+c.bisa = 6;
 
 % Beta for muhat
 c.b1mu = 0;
-c.b1sa = 6.25;
+c.b1sa = 6;
 
 % Standard deviation
 c.sigmamu = 0;
-c.sigmasa = 6.25;
+c.sigmasa = 6;
 
 % Non decision time
 c.Tmu = -Inf;

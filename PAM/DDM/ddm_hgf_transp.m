@@ -32,7 +32,6 @@ pstruct.a   = pvec(1);
 pvec(2)      = exp(ptrans(2));
 pstruct.v   = pvec(2);
 
-
 % Transform "bw" values in the range (-1,1)
 pvec(3)      = 2/(1+exp(-ptrans(3)))-1;
 pstruct.bw   = pvec(3);
