@@ -18,10 +18,11 @@ muhat = esim.traj.muhat(:,1);
 
 %% Simulation
 % Parameter space
-bv_all = [5.85 5.95 6.58 6.62];
-bi_all = [6.3 6.14 7.03 6.815];
+bv_all = [-1 -1 -.3 -.3];
+bi_all = [-.53 -.75 .19 -0.1];
 b1_all = [0.3 0.7];
 sigma = .25;
+T = .150;
 
 % Define the number of subjects
 nsubj = 100;
@@ -70,13 +71,13 @@ for sx = 1:length(bv_all)
             for n = 1:length(u) % looping over the trial list
 
                 % Defining from the first accumulator probability distribution
-                P1 =    lognpdf(1:3000,mu_r1(n),sigma);
+                P1 =    lognpdf(0.01:0.01:3,mu_r1(n),sigma);
                 % Sampling from the first accumulator probability distribution
-                P1 = randsample(1:3000, 1, true,P1);
+                P1 = randsample(0.01:0.01:3, 1, true,P1);
                 % Defining from the second accumulator probability distribution
-                P2 =    lognpdf(1:3000,mu_r2(n),sigma);
+                P2 =    lognpdf(0.01:0.01:3,mu_r2(n),sigma);
                 % Sampling from the second accumulator probability distribution
-                P2 = randsample(1:3000, 1, true,P2);
+                P2 = randsample(0.01:0.01:3, 1, true,P2);
                 P = [P1 P2];
                 % Taking the minimum probability from the two
                 % probability distribution
@@ -85,14 +86,15 @@ for sx = 1:length(bv_all)
         end
         % Setting the response of the second accumulator to 0
         resp(resp==2)=0;
+        rt = rt +T;
         % looping over the number of simulated subjects
         
         parfor idx = 1:nsubj
             y = [rt(:,idx) resp(:,idx)];
             obs_model = lnr_hgf_config;
-            obs_model.bvmu=log((nanmean(y(:,1))));
-            obs_model.bimu=log((nanmean(y(:,1))));
-            obs_model.sigmamu = log(log(std(y(:,1))));
+            %obs_model.bvmu=log((nanmean(y(:,1))));
+            %obs_model.bimu=log((nanmean(y(:,1))));
+            %obs_model.sigmamu = log(log(std(y(:,1))));
             obs_model = tapas_align_priors(obs_model);
             % fitting the model
             m = tapas_fitModel(y,...
@@ -111,6 +113,7 @@ for sx = 1:length(bv_all)
             temp_table.bi = repmat(bi, numel(idx), 1); % Replicate 'bi' values for each subject
             temp_table.b1 = repmat(b1, numel(idx), 1); % Replicate 'b1' values for each subject
             temp_table.sigma = repmat(sigma, numel(idx), 1); % Replicate 'sigma' values for each subject
+            temp_table.T = repmat(T, numel(idx), 1); % Replicate 'T' values for each subject
             temp_table.om2 = repmat(om2, numel(idx), 1); % Replicate 'f' values for each subject
             % Add the subject index
             temp_table.subject = ones(numel(idx), 1) * idx; % Assign the subject index
@@ -124,4 +127,4 @@ for sx = 1:length(bv_all)
 end
 
 % save result of the simulation
-save D:\PAM\PAM_02_08_2024\results\lnr_HGF_sim_results.mat models
+save D:\PAM\PAM_02_08_2024\results\lnr_HGF_sim_results_seconds_non_decision_time.mat models

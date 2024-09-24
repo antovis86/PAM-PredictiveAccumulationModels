@@ -68,8 +68,8 @@ c.bvmu = 0;
 c.bvsa = 4;
 
 % Non decision time
-c.Tmu = 0;
-c.Tsa = 4;
+c.Tmu = -Inf;
+c.Tsa = 0;
 
 
 % Gather prior settings in vectors

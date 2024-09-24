@@ -18,8 +18,14 @@ function [pvec, pstruct] = lnr_hgf_transp(r, ptrans)
 % Frontiers in Psychiatry 12, 857, 2021.
 
 % extracting times
+try
 y = r.y(:,1);
 y(r.irr) = [];
+catch
+    y =nan;
+end
+
+
 
 % Initialize an empty array to store the transformed values
 pvec    = NaN(1,length(ptrans));
@@ -42,7 +48,12 @@ pvec(4)      = exp(ptrans(4));
 pstruct.sigmamu = pvec(4);
 
 % Transform "T" using a sigmoid centered at the minimum value of y 
+if ~isnan(y)
 pvec(5)      = min(y)/(1+exp(-ptrans(5)));
 pstruct.Tmu = pvec(5);
+else
+pvec(5) = ptrans(5);
+pstruct.Tmu = pvec(5);
+end
 
 return;

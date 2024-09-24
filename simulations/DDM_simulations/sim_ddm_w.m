@@ -78,14 +78,19 @@ for sx = 1:length(a_all)
         rt = rt+T;
         parfor idx = 1:nsubj
             y = [rt(:,idx) resp(:,idx)];
-            m = tapas_fitModel(y,...
+            m1 = tapas_fitModel(y,...
                 u,...
                 prc_model, ...
                 obs_model,...
                 'tapas_quasinewton_optim_config');
+              m2 = tapas_fitModel(y,...
+                u,...
+                prc_model, ...
+                ddm_hgf_config,...
+                'tapas_quasinewton_optim_config');
 
-            p_obs(sx,bx,idx,:)=m.p_obs.p([1:3 end]);
-            p_prc(sx,bx,idx,:)=m.p_prc.om(2);
+            p_obs(sx,bx,idx,:)=m1.p_obs.p([1:3 end]);
+            p_prc(sx,bx,idx,:)=m1.p_prc.om(2);
             % populate the table
             % 1) create a temporary table
             temp_table = table();
@@ -98,7 +103,9 @@ for sx = 1:length(a_all)
             % Add the subject index
             temp_table.subject = ones(numel(idx), 1) * idx; % Assign the subject index
             % Add the model
-            temp_table.model = repmat({m}, numel(idx), 1); % Replicate 'm' object for each subject
+            temp_table.model_1 = repmat({m1}, numel(idx), 1); % Replicate 'm' object for each subject
+            temp_table.model_2 = repmat({m2}, numel(idx), 1); % Replicate 'm' object for each subject
+
             % Concatenate the temporary table with the models table
             models = [models; temp_table];
         end
@@ -106,4 +113,4 @@ for sx = 1:length(a_all)
 end
 
 
-save D:\PAM\PAM_02_08_2024\results\ddm_HGF_sim_w_results.mat models
+save D:\PAM\PAM_02_08_2024\results\ddm_m1_m2\ddm_HGF_sim_w_results.mat models
