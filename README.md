@@ -1,3 +1,7 @@
+# PAM 
+
+---
+
 This repository contains the MATLAB implementation of PAM framework. The structure and methodologies are inspired from the HGF toolbox, open source code available as part of the TAPAS software collection
 Original reference:
 
