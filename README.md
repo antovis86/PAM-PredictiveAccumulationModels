@@ -1,4 +1,4 @@
-down# PAM 
+# PAM 
 
 ---
 
@@ -11,17 +11,7 @@ Psychiatry, 12:680811. https://doi.org/10.3389/fpsyt.2021.680811
 
 The repository is structured in the following way:
 
-\```
-project-root
-├── PAM_master
-│   ├── PAM_HGF: contains the implementation of PAM framework using HGF model as perceptual model.
-│   ├── PAM_VKF: contains the implementation of PAM framework using Volatile Kalman Filter (VKF) model as perceptual model.
-│
-└── Examples
-    ├── HGF_examples: contains different usage examples with HGF model as perceptual model.
-    ├── VKF_examples: contains different usage examples with VKF model as perceptual model.
-\```
-
+<pre> ``` project-root ├── PAM_master │ ├── PAM_HGF: contains the implementation of PAM framework using HGF model as perceptual model. │ ├── PAM_VKF: contains the implementation of PAM framework using Volatile Kalman Filter (VKF) model as perceptual model. │ └── Examples ├── HGF_examples: contains different usage examples with HGF model as perceptual model. ├── VKF_examples: contains different usage examples with VKF model as perceptual model. ``` </pre>
 ---- 
 
 ## Dependencies 
