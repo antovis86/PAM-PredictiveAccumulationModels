@@ -55,7 +55,7 @@ function bpa = pam_tapas_bayesian_parameter_average(datasets)
 % COPYING or <http://www.gnu.org/licenses/>.
 
 % Number of estimates to average
-n = size(datasets,2);
+n = length(datasets);
 
 % Inputs
 u = datasets{1}.u;
