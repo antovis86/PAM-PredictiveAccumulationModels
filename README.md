@@ -19,7 +19,8 @@ The repository is structured in the following way:
 | Required | Package           | Remarks         |
 | ---------|-------------------|-----------------|
 | Yes      | [MATLAB]          |                 |
-| Yes      | [TAPAS]           |                 |
+| Yes      | [TAPAS]           | 4 PAM_HGF       |
+| Yes      | [VKF]             | 4 PAM_VKF       |
 
 ----
 
