@@ -1,5 +1,5 @@
 # VKF
-To tun PAM_VKF, dowload the VFK-master repo from https://github.com/payampiray/VKF/tree/master 
+PAM_vKF requires the VFK-master repo you can download from https://github.com/payampiray/VKF/tree/master 
 
 Citation  
 VKF is based on this paper  
