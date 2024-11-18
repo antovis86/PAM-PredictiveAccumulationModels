@@ -1,9 +1,6 @@
 # VKF
+To tun PAM_VKF, dowload the VFK-master repo from https://github.com/payampiray/VKF/tree/master 
 
-This repo contains these scripts  
-vkf: volatile Kalman filter  
-vkf_bin: volatilte Kalman filter for binary outcomes  
-  
 Citation  
 VKF is based on this paper  
 Piray P, Daw ND, 2019, "A simple model for learning in volatile environments", biorxiv  
