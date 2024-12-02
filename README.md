@@ -3,11 +3,13 @@
 ---
 
 This repository contains the MATLAB implementation of PAM framework. The structure and methodologies are inspired from the HGF toolbox, open source code available as part of the TAPAS software collection
-Original reference:
+References:
 
-Frässle, S., et al. (2021). TAPAS: An Open-Source Software Package for
+TAPAS - Frässle, S., et al. (2021). TAPAS: An Open-Source Software Package for
 Translational Neuromodeling and Computational Psychiatry. Frontiers in
 Psychiatry, 12:680811. https://doi.org/10.3389/fpsyt.2021.680811
+
+PAM - https://arxiv.org/abs/2411.13203
 
 The repository is structured in the following way:
 
