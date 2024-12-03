@@ -54,8 +54,8 @@ u(irr) = [];
 
 
 % Calculate trial-wise drift rates for the two accumulators
-mu_c1 = a + b_val.* double(u == 1) + b .*(.5 -muhat);
-mu_c0 = a + b_val.* double(u == 0) + b .*(.5 - (1 -muhat));
+mu_c1 = a + b_val.* double(u == 1) + b .*(muhat - .5);
+mu_c0 = a + b_val.* double(u == 0) + b .*((1 -muhat) - .5);
 
 
 
