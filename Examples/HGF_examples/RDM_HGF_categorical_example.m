@@ -10,7 +10,7 @@ load example_categorical_input
 % Set parameters
 om2 = -4; % HGF learning rate
 a_a = 2; % RDM: Intercept of decision threshold "a"
-b_a = 1.2; % RDM: Muhat slope effect for "a"
+b_a = -1.2; % RDM: Muhat slope effect for "a"
 a_v = 2.5; % RDM: Intercept of drift rate "v"
 b_val = 2.5; % RDM: Effect of validity (resp = input) on the drift
 b_v = 0; % RDM: Muhat slope effect for "v"
@@ -37,9 +37,9 @@ muhat = squeeze(esim.traj.muhat(:,1,:)); muhat=muhat./sum(muhat,2);
 
 % SIMULATE RESPONSES
 % Define trial-wise thresholds for the accumulators
-a_c1 = a_a + b_a.*(1/n_choices-muhat(:,1));
-a_c2 = a_a + b_a.*(1/n_choices-muhat(:,2));
-a_c3 = a_a + b_a.*(1/n_choices-muhat(:,3));
+a_c1 = a_a + b_a.*(muhat(:,1) - 1/n_choices);
+a_c2 = a_a + b_a.*(muhat(:,2) - 1/n_choices);
+a_c3 = a_a + b_a.*(muhat(:,3) - 1/n_choices);
 % Define trial-wise drift rates for the accumulators
 drift_c1 = a_v + b_val.* double(u_cat == 1) +  b_v.*(muhat(:,1) - 1/n_choices);
 drift_c2 =a_v + b_val.* double(u_cat == 2) +  b_v.*(muhat(:,2) - 1/n_choices);

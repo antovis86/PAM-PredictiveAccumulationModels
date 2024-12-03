@@ -13,7 +13,7 @@ load u.mat
 % TODO: Set parameters ------------------------------------------------
 om2 = -4; % HGF learning rate
 a_a = 2; % RDM: Intercept of decision threshold "a"
-b_a = 1.2; % RDM: Muhat slope effect for "a"
+b_a = -1.2; % RDM: Muhat slope effect for "a"
 a_v = 2.5; % RDM: Intercept of drift rate "v"
 b_val = 2.5; % RDM: Effect of validity (resp = input) on the drift
 b_v = 0; % RDM: Muhat slope effect for "v"
@@ -32,8 +32,8 @@ muhat = esim.traj.muhat(:,1);
 
 % SIMULATE RESPONSES
 % Calculate trial-wise threshold for both the accumulators
-a_c1 = a_a + b_a.*(.5-muhat);
-a_c0 = a_a + b_a.*(.5-(1-muhat));
+a_c1 = a_a + b_a.*(muhat - .5);
+a_c0 = a_a + b_a.*((1-muhat) - .5);
 
 % Calculate drift rate for both accumulators
 drift_c1 = a_v + b_val.*(u==1) +  b_v .* (muhat - .5);
