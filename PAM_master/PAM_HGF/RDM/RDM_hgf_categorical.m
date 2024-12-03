@@ -65,8 +65,8 @@ for ntrial = 1:length(u)
         resp_yes = resp(ntrial);
         resp_not = setdiff(1:n_choices,resp_yes);
         % Extract the threshold for the specific trial
-        a_pdf = a_a + b_a.*(1/n_choices-mu1hat(ntrial,resp_yes));
-        a_cdf = a_a + b_a.*(1/n_choices-mu1hat(ntrial,resp_not));
+        a_pdf = a_a + b_a.*(mu1hat(ntrial,resp_yes) - 1/n_choices);
+        a_cdf = a_a + b_a.*(mu1hat(ntrial,resp_not) - 1/n_choices);
         % Extract the drifts for the specific trial
         drift_pdf = a_v + b_val*double(u(ntrial) == resp_yes) + b_v*(mu1hat(ntrial,resp_yes) - 1/n_choices);
         drift_cdf = a_v + b_val*double(u(ntrial) == resp_not) + b_v* (mu1hat(ntrial,resp_not) - 1/n_choices);
