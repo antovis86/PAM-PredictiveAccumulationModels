@@ -54,8 +54,8 @@ u(irr) = [];
 
 
 % Calculate trial-wise threshold for both the accumulators
-a_c1 = a_a + b_a.*(.5-muhat);
-a_c0 = a_a + b_a.*(.5-(1-muhat));
+a_c1 = a_a + b_a.*(muhat - .5);
+a_c0 = a_a + b_a.*((1-muhat) - .5);
 
 % Calculate drift rate for both accumulators
 drift_c1 = a_v + b_val.*(u==1) +  b_v .* (muhat - .5);
