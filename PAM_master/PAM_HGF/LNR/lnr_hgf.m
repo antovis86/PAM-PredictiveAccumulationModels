@@ -58,8 +58,8 @@ u(r.irr) = [];
 
 
 % Calculate trial-wise drift rates for the two accumulators 
-mu_c1 = a + b_val.* double(u == 1) + b .*(.5 -mu1hat);
-mu_c0 = a + b_val.* double(u == 0) + b .*(.5 - (1 -mu1hat));
+mu_c1 = a + b_val.* double(u == 1) + b .*(mu1hat - .5);
+mu_c0 = a + b_val.* double(u == 0) + b .*((1 -mu1hat) - .5);
 
 
 % Calculate predicted log-likelihood
