@@ -2,7 +2,8 @@
 
 ---
 
-This repository contains the MATLAB implementation of PAM framework. The structure and methodologies are inspired from the HGF toolbox, open source code available as part of the TAPAS software collection
+This repository contains the MATLAB implementation of PAM framework. The structure and methodologies are inspired from the HGF toolbox, open source code available as part of the TAPAS software collection. For the Python implementation see: https://github.com/francesco-cal98/Pam---Predictive-Accumulator-models
+For the R implementation see: https://github.com/Mar-Cald/PAM-PredictiveAccumulationModels
 References:
 
 TAPAS - Frässle, S., et al. (2021). TAPAS: An Open-Source Software Package for
